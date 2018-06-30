@@ -180,6 +180,11 @@ public class Controller {
         Optional<ButtonType> result = alert.showAndWait();
         if(result.isPresent() && result.get() == ButtonType.OK){
             TodoData.getInstance().deleteTodoItem(item);
+            // empty all fields if nothing in the list
+            if(filteredList.isEmpty()){
+                itemDetailsTextArea.clear();
+                deadlineLabel.setText("");
+            }
         }
     }
 
